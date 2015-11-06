@@ -144,5 +144,6 @@ body {
 
 .latest-donation,
 .all-donations {
-    height: 300px;
+    border: dashed 1px #000000;
+    height: 225px;
 }
