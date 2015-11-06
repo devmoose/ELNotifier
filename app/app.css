@@ -37,29 +37,29 @@ body {
 .donation-total {
     text-align: right;
     min-width: 125px;
-    position: absolute;
-    right: 7px;
     text-shadow: 0 0 2px #ffffff;
+    margin-right: 5px;
+}
+
+.donation-goal {
+    width: 125px;
+    text-shadow: 0 0 2px #ffffff;
+    margin-left: 5px;
 }
 
 .donation-goal:before {
     content: "/ ";
 }
 
-.donation-goal {
-    width: 125px;
-    position: absolute;
-    right: -130px;
-    text-shadow: 0 0 2px #ffffff;
-}
-
 .participant-info {
+    height: 250px;
     margin-top: 15px;
+    display: block;
+    text-align: center;
 }
 
 .participant-info .name {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 16px;
+    font-size: 22px;
 }
 
 .participant-info img {
@@ -115,23 +115,34 @@ body {
     font-family: 'Dancing Script', cursive;
 }
 
-.latest-donation {
+.pad {
     padding: 10px;
-    background-color: #07f;
 }
 
-.latest-donation .donor {
+.pad .donor {
     font-size: 16px;
     border-bottom: solid 1px #aaaaaa;
     display: inline-block;
     min-width: 275px;
 }
 
-.latest-donation .message {
+.pad .message {
     padding-left: 10px;
 }
 
 .all-donors {
     padding: 10px;
-    background-color: #07f;
+}
+
+.row {
+    margin-top: 15px;
+}
+
+.bar > div {
+    padding: 0;
+}
+
+.latest-donation,
+.all-donations {
+    height: 300px;
 }
