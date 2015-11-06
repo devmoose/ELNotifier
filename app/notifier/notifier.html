@@ -3,6 +3,12 @@
         <div class="col-xs-3">
             <form name="participantInfo">
                 <div class="form-group">
+                    <label class="control-label">Theme</label>
+                    <select class="form-control" ng-model="nc.theme" ng-class="nc.theme">
+                        <option ng-repeat="font in nc.fonts" ng-class="font.font" value="{{font.font}}">{{font.name}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
                     <label class="control-label">Participant ID</label>
                     <input type="number" ng-required="true" ng-model="nc.participantID" class="form-control" ng-disabled="nc.isRunning" />
                 </div>
@@ -14,7 +20,7 @@
                 <button class="btn btn-danger" ng-if="nc.isRunning" ng-click="nc.stop()">Stop Notifier</button>
             </form>
             <div class="participant-info">
-                <span class="name" ng-bind="nc.name"></span>
+                <span ng-class="nc.theme" ng-bind="nc.name"></span>
                 <img src="" ng-src="{{nc.avatar}}" title="{{nc.name}}" />
             </div>            
         </div>
@@ -23,15 +29,22 @@
                 <div class="progress donation-limit">
                     <div class="progress-bar progress-bar-striped" role="progressbar" ng-style="{'width': nc.previousDonationWidth}"></div>
                     <div class="progress-bar progress-bar-success" ng-style="{'width': nc.newDonationWidth}"></div>
-                    <div class="donation-total" ng-bind="nc.donationTotal | currency"></div>
-                    <div class="donation-goal" ng-bind="nc.donationTarget | currency"></div>
+                    <div ng-class="nc.theme" class="donation-total" ng-bind="nc.donationTotal | currency"></div>
+                    <div ng-class="nc.theme" class="donation-goal" ng-bind="nc.donationTarget | currency"></div>
                 </div>
             </div>
             <div class="row">
-                <h2>Latest Donation</h2>
-                <div class="latest-donation">
-                    {{nc.newestDonation}}
+                <h2 ng-class="nc.theme">Latest Donation</h2>
+                <div class="latest-donation" ng-class="nc.theme" ng-show="nc.newestDonation != null">
+                    <div class="donor">{{nc.newestDonation.donorName}}</div>
+                    <div class="message">
+                        {{nc.newestDonation.message}}
+                    </div>
                 </div>
+            </div>
+            <div class="row">
+                <h2 ng-class="nc.theme">All Donors</h2>
+                <div class="all-donors" ng-show="nc.allDonations.length > 0">{{nc.allDonors}}</div>
             </div>
         </div>
     </div>
