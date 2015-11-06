@@ -1,0 +1,38 @@
+<div class="starter-template">
+    <div class="row">
+        <div class="col-xs-3">
+            <form name="participantInfo">
+                <div class="form-group">
+                    <label class="control-label">Participant ID</label>
+                    <input type="number" ng-required="true" ng-model="nc.participantID" class="form-control" ng-disabled="nc.isRunning" />
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Query Delay (ms)</label>
+                    <input type="number" ng-required="true" ng-model="nc.donationQueryDelay" class="form-control" ng-disabled="nc.isRunning" />
+                </div>
+                <button class="btn btn-success" ng-if="!nc.isRunning" ng-click="nc.start()" ng-disabled="participantInfo.$invalid">Start Notifier</button>
+                <button class="btn btn-danger" ng-if="nc.isRunning" ng-click="nc.stop()">Stop Notifier</button>
+            </form>
+            <div class="participant-info">
+                <span class="name" ng-bind="nc.name"></span>
+                <img src="" ng-src="{{nc.avatar}}" title="{{nc.name}}" />
+            </div>            
+        </div>
+        <div class="col-xs-9">
+            <div class="row">
+                <div class="progress donation-limit">
+                    <div class="progress-bar progress-bar-striped" role="progressbar" ng-style="{'width': nc.previousDonationWidth}"></div>
+                    <div class="progress-bar progress-bar-success" ng-style="{'width': nc.newDonationWidth}"></div>
+                    <div class="donation-total" ng-bind="nc.donationTotal | currency"></div>
+                    <div class="donation-goal" ng-bind="nc.donationTarget | currency"></div>
+                </div>
+            </div>
+            <div class="row">
+                <h2>Latest Donation</h2>
+                <div class="latest-donation">
+                    {{nc.newestDonation}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
